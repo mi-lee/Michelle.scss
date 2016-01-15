@@ -1,0 +1,134 @@
+// // FILL THESE OUT!
+// @import 'normalize';
+
+$smallScreen: 400px;
+$largeScreen: 550px;
+$n: 12; // number of cols max in a screen
+$h: 6; // number of h1's, etc.
+
+
+*[col] {
+  width: 100%;
+  float: left;
+  box-sizing: border-box;
+}
+
+
+
+// Media
+@mixin media($min-width) {
+    @if ($min-width < 500px) {
+        @media (min-width: $min-width) {
+          main {
+            width: 85%;
+            padding: 10;
+          }
+
+            @for $j from 1 to ($h + 1) {
+              h#{$j} {
+                margin-top: 0;
+                margin-bottom: 2rem;
+                font-weight: 300;
+                @if ($j >= 5) {
+                  line-height: 1.2 + 0.07 * ($j);
+                } @else {
+                  line-height: 1.2 + 0.05 * ($j - 1);
+                }
+                font-size: 4rem - 0.4 * ($j - 1);
+                letter-spacing: -0.10rem + (($j - 1)/35)
+              }
+            }
+        }
+    }
+
+    @else {
+        @media (min-width: $min-width) {
+
+
+          main {
+            width: 80%;
+          }
+          *[col] {
+            margin-left: 4%;
+          }
+          *[col]:first-child {
+            margin-left: 0;
+          }
+
+          @for $i from 0 to ($n - 1) {
+                *[col="#{$i+1}"] {
+                  width: (14% + (26 * $i))/3;
+                  @if ($i == 11) {
+                    margin-left: 0;
+                  }
+              }
+          }
+
+          @for $j from 1 to ($h + 1) {
+            h#{$j} {
+              margin-top: 0;
+              margin-bottom: 2rem;
+              font-weight: 300;
+              @if ($j >= 5) {
+                line-height: 1.2 + 0.07 * ($j);
+              } @else {
+                line-height: 1.2 + 0.05 * ($j - 1);
+              }
+              font-size: 5rem - 0.7 * ($j - 1);
+            }
+          }
+        }
+    }
+}
+
+@include media($smallScreen);
+@include media($largeScreen);
+
+
+ // Center
+@mixin center($max-width) {
+    position: relative;
+
+    width: 100%;
+    max-width: $max-width;
+    padding: 0 20px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+
+main {
+    @include center(960px);
+}
+
+
+
+// Base Styles
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.5em;
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #222;
+}
+
+p {
+  margin-top: 0;
+}
+
+a {
+  color: #1EAEDB;
+  &:hover {
+    color: #0FA0CE;
+  }
+}
+
+
+
+
+
