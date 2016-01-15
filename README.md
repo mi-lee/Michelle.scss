@@ -1,2 +1,3 @@
 # Michelle.scss
-Grid &amp; mobile styles from scratch [SASS/CSS], because why not
+
+Grid and mobile styles from scratch in SCSS (and processed CSS) for practice.
